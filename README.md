@@ -1,4 +1,4 @@
-# DatabaseManageSystemDemo_JavaFX_SQLServer
+# DatabaseManagementSystemDemo_JavaFX_SQLServer
 大三课设
 
 
