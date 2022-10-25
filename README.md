@@ -2,10 +2,6 @@
 大三课设
 
 
-
-
-# 后端
-
 # 绪论
 
 ## 要求：
@@ -102,50 +98,1028 @@
 
 
 
-## 数据流图
 
-# 数据库大作业
+
+# 前端开发
+
+
+
+## 开发环境
+
+
+
+- IDE : IntelliJ IDEA 2021
+- 工具：JavaFX， JDK ：Oracle OpenJDK v16.0.2
+- 布局：Scene Builder
+- 客制化： CSS
+- 接口：JDBC sqljdbc_9.4.1.0_chs
+- 服务器：SQL Server 2019
+
+
+
+所需的外部包：
+
+![image](https://user-images.githubusercontent.com/62274988/197760751-328bdccd-1ec9-4d66-bd93-82a2b9988e3d.png)
+
+
+
+
+
+
+
+
+
+
+
+## Login
+
+
+
+### 基础界面：
+
+![image](https://user-images.githubusercontent.com/62274988/197760769-d6ade434-cf19-45f3-90ef-67527d718c67.png)
+
+
+
+
+账号密码为空时登录：
+
+![image](https://user-images.githubusercontent.com/62274988/197760805-1dc0d644-1d09-4bed-bb08-402d4054ebb9.png)
+
+账号密码错误：
+
+![image](https://user-images.githubusercontent.com/62274988/197760821-b966ca01-237c-4761-b273-b6828aaccb03.png)
+
+
+
+
+
+
+由于JavaFX自带的控件不够美观，对其添加自定义的CSS文件改变布局
+
+![image](https://user-images.githubusercontent.com/62274988/197760853-ff4d7b3c-8d9b-42f7-8a96-f7ca523c57f9.png)
+
+![image](https://user-images.githubusercontent.com/62274988/197760912-531bc1bf-7577-4ff4-be34-66aaff19f025.png)
+
+![image](https://user-images.githubusercontent.com/62274988/197760931-24ebd72a-e357-48ad-b4d6-559b1ba96d7f.png)
+
+![image](https://user-images.githubusercontent.com/62274988/197760969-9e807e73-1d43-47ca-8847-b5415cab3d2f.png)
+
+
+
+
+CSS: 添加了圆角和阴影效果
+
+![image](https://user-images.githubusercontent.com/62274988/197760996-19c8da55-46fb-4d8c-a8f6-5e9fe75b46b7.png)
+
+由于没有做自适应分辨率，因此取消顶部任务栏，改为无边框模式
+
+![image](https://user-images.githubusercontent.com/62274988/197761025-e4f387c0-1600-468b-acd4-fb59ad4b3c87.png)
+
+退出键绑定在Cancel中
+
+
+
+账号密码正确时，进入内部界面，首先创建Stage，跳转到我定义的默认的source_table布局中：
+![image](https://user-images.githubusercontent.com/62274988/197761049-8d0d038b-ac23-4252-b50d-81d6251c285c.png)
+
+
+
+
+
+### Login类代码：
+
+**LoginController**
+
+```
+package com.gui.sqldemo;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
+
+
+import java.io.File;
+import java.net.URL;
+import java.sql.Connection;
+import java.util.ResourceBundle;
+
+public class LoginController extends HelloApplication implements Initializable {
+
+    @FXML
+    private Button cancelButton;
+    @FXML
+    private Button loginButton;
+    @FXML
+    private Text loginMessageText;
+    @FXML
+    private ImageView brandingImageView;
+    @FXML
+    private TextField usernameTextField;
+    @FXML
+    private PasswordField enterPasswordField;
+    
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle){
+        File brandingFile = new File("Images/93492380.jpg");
+        Image brandingImage = new Image(brandingFile.toURI().toString());
+        brandingImageView.setImage(brandingImage);
+    }
+    public void loginButtonOnAction(ActionEvent event){
+
+        if (usernameTextField.getText().isBlank() == false && enterPasswordField.getText().isBlank() ==false){
+            validateLogin();
+        }
+        else {
+            loginMessageText.setText("Blank, Please enter");
+        }
+
+    }
+     public void cancelButtonOnAction(){
+         Stage stage = (Stage) cancelButton.getScene().getWindow();
+         stage.close();
+
+     }
+
+
+     public void  validateLogin(){
+
+        if(usernameTextField.getText().equals("sa")&&enterPasswordField.getText().equals("258866"))
+        {
+            loginMessageText.setText("Connect Success");
+           // DataBaseConnection connectNow = new DataBaseConnection();
+          //  Connection connectDB = connectNow.getConnection();
+            Stage stage = (Stage) loginButton.getScene().getWindow();
+            stage.close();
+            ViewAlter();
+
+
+        }
+        else {
+            loginMessageText.setText("Invalid Login, Please try again");
+        }
+
+
+     }
+
+
+
+     public void ViewAlter(){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("source_table.fxml"));
+            Stage TableStage = new Stage();
+            TableStage.initStyle(StageStyle.UNDECORATED);
+            Scene scene = new Scene(root, 1280, 900);
+            TableStage.setScene(scene);
+            TableStage.show();
+            TableStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                public void handle(WindowEvent event) {
+                    //此处当stage关闭时，同时结束程序，避免stage关闭后，程序界面关闭了，但后台线程却依然运行的问题
+                    System.exit(0);
+                }
+            });
+
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+            e.getCause();
+        }
+
+     }
+
+
+}
+```
+
+
+
+**scratch.css:**
+
+```
+.text-field{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 100;
+}
+
+
+.transparent{
+    -fx-background-color: rgb(0,0,0,0);
+}
+
+
+.shadow{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0,0.0,0.0,10.0);
+}
+
+
+.button{
+    -fx-background-color: #F2E635;
+    -fx-background-radius: 50;
+}
+
+.button:pressed{
+    -fx-background-color: #DBD030;
+}
+
+
+
+.button2{
+    -fx-background-color: #699BFF;
+}
+
+.button3{
+    -fx-background-color: #FF6B6B;
+}
+
+
+
+.button2:pressed{
+    -fx-background-color: #5F8DE8;
+}
+
+.button3:pressed{
+    -fx-background-color: #DE5D5D;
+}
+
+
+
+
+
+
+.table-view{
+    -fx-background-color:  #E6DAC5;
+    -fx-fill: white;
+}
+
+.table-view .column-header-background{
+    -fx-background-color:  #D9C27E;
+
+
+}
+
+.table-view .column-header, .table-view.filler{
+    -fx-size: 25;
+    -fx-border-width: 0 0 10 0;
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header .label{
+    -fx-text-fill: white;
+}
+
+
+.pane{
+    -fx-background-color:  #E6DAC5;
+    -fx-background-radius: 50;
+}
+
+.Vbox{
+
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+## FXML Controller
+
+
+
+进入后台，每一个FXML文件对应一个Controller.java文件
+
+
+
+![image](https://user-images.githubusercontent.com/62274988/197761152-c18146ce-955b-42bb-9e73-d4fe4138c196.png)
+
+
+
+![image](https://user-images.githubusercontent.com/62274988/197761173-e7a6118a-db4a-451d-8e06-9495c9baccce.png)
+
+
+## JDBC
+
+
+
+连接数据库的过程封装成一个类：
+
+
+![image](https://user-images.githubusercontent.com/62274988/197761217-eace8f26-0a90-4f3f-bc2d-cea87694039c.png)
+
+
+
+
+![image](https://user-images.githubusercontent.com/62274988/197761248-0ff6d2a6-a88d-471c-9fdb-0b02eef36dbc.png)
+
+
+**具体代码：**
+
+```
+package com.gui.sqldemo;
+import java.sql.*;
+
+
+public class DataBaseConnection {
+
+    public Connection databaseLink;
+
+    public Connection getConnection() {
+        String JDriver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";//设置SQL Server数据库引擎
+        String connectDB = "jdbc:sqlserver://127.0.0.1:1433;DatabaseName=VCD_MS";//指定数据库
+        try {
+            Class.forName(JDriver);//加载数据库引擎
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            System.exit(0);
+        }
+
+        try {
+
+            String user = "sa";
+            String password = "******";
+            databaseLink = DriverManager.getConnection(connectDB,user,password);
+            Connection con = DriverManager.getConnection(connectDB, user, password);
+            System.out.println("连接数据库成功");
+            Statement cmd = con.createStatement();
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+
+
+        return databaseLink;
+
+}
+
+}
+```
+
+
+
+
+
+## 信息管理界面
+
+
+
+包括： ContentSearchController 、SourceSearchController 、TagSearchController、PurchaseSearchController 、SettingSearchController
+
+![image](https://user-images.githubusercontent.com/62274988/197761278-77361aa3-4ab8-4bc3-aafe-bbdf80d815a8.png)
+
+### 基本信息显示
+
+![image](https://user-images.githubusercontent.com/62274988/197761310-17aeac70-9afa-41fa-9a80-78299bdf5b8f.png)
+
+
+
+对 TableView 进行数据库的数据导入
+
+![image](https://user-images.githubusercontent.com/62274988/197761361-243a0b87-e389-42fe-a09c-7d7dd33c248f.png)
+
+
+
+
+
+
+
+
+
+
+
+对  TableView 进行设计导入，由于每个表的内容都不一致，因此对每个表都要设计一个数据结构：
+
+
+
+此处举ContentSearchModel的例子：因为里面的数据包括大多数数据类型
+
+
+![image](https://user-images.githubusercontent.com/62274988/197761414-14576fa4-4eb9-4229-b18f-f60a97b199b0.png)
+
+
+
+ContentSearchModel中初始化的函数：
+
+![image](https://user-images.githubusercontent.com/62274988/197761504-4d4afdc6-4ce8-456d-9d1d-2e9c5aa7fa6f.png)
+
+```
+package com.gui.sqldemo;
+
+public class ContentSearchModel {
+
+    String title,language,rating,country,release,resolution,introduction,anothername;
+
+    int duration;
+    float score;
+
+    public ContentSearchModel(String title,String language,String rating,String country,String release
+    ,int duration,float score,String resolution,String introduction,String anothername){
+        this.title = title;
+        this.language = language;
+        this.rating = rating;
+        this.country = country;
+        this.release = release;
+        this.duration = duration;
+        this.score = score;
+        this.resolution = resolution;
+        this.introduction = introduction;
+        this.anothername = anothername;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getRelease() {
+        return release;
+    }
+
+    public String getResolution() {
+        return resolution;
+    }
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public String getAnothername() {
+        return anothername;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public float getScore() {
+        return score;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setRelease(String release) {
+        this.release = release;
+    }
+
+    public void setResolution(String resolution) {
+        this.resolution = resolution;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
+    public void setAnothername(String anothername) {
+        this.anothername = anothername;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public void setScore(float score) {
+        this.score = score;
+    }
+}
+```
+
+ContentSearchController：
+
+![image](https://user-images.githubusercontent.com/62274988/197761682-7cc59721-03d6-4a1f-8311-53810fff1b77.png)
+
+![image](https://user-images.githubusercontent.com/62274988/197761721-41306e87-5ed0-44b0-98fc-233cca8ab979.png)
+
+
+
+### 搜索功能：
+
+搜索功能展示：
+
+![image](https://user-images.githubusercontent.com/62274988/197761794-d289e604-2d37-4de0-9143-0b7953931393.png)
+
+在我们定义的数据结构Model中提供数据调用的方法，作用与搜索模块中：
+
+![image](https://user-images.githubusercontent.com/62274988/197761845-92f0d7a0-3383-415a-9b48-d20987ef5940.png)
+
+
+
+读取TextField中的文本，与TableView中的数据进行比对：
+
+![image](https://user-images.githubusercontent.com/62274988/197761871-8ea1e9ce-d5d8-45ee-ae29-09ee73e3de5d.png)
+
+
+
+### 界面跳转：
+
+通过绑定点击按钮进行跳转
+
+![image](https://user-images.githubusercontent.com/62274988/197761931-77c9fb86-ac94-41e9-ad5f-a7214a2e7c19.png)
+
+点击按钮后
+
+![image](https://user-images.githubusercontent.com/62274988/197761978-77800bac-3249-4933-a3a2-a4e772a4fca8.png)
+
+
+对按钮颜色进行修改，能让用户更直观地看见目前所处的界面，同时左上方也有icon用来显示现在所处的界面。
+
+![image](https://user-images.githubusercontent.com/62274988/197762133-ae3403ab-0328-4aa8-889c-3877f1602559.png)
+
+![image](https://user-images.githubusercontent.com/62274988/197762163-fd8fe63a-0fde-48b7-84b7-a4d5abe8bdca.png)
+
+
+
+
+
+
+
+在 Controller中对对应的按钮绑定一个ButtonOnAction，用来响应按钮点击事件。我们这里的按钮用来跳转界面，在已经创建的Stage中加载其他fxml布局，不需要关闭Stage重新创建，在视觉上可以避免重新创建的时候闪烁的bug。
+
+![image](https://user-images.githubusercontent.com/62274988/197762266-6e9ed8dc-7833-476c-bbd5-fac941d277a6.png)
+
+
+
+
+
+在fxml文件中，我们绑定了Controller，因此在跳转界面时也会切换到对应的Controller中去。
+
+![image](https://user-images.githubusercontent.com/62274988/197762299-3d917ee0-181a-4823-b77c-a5a6ad0b3658.png)
+
+
+
+
+
+### 整体Controller代码：
+
+```
+package com.gui.sqldemo;
+
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import java.io.File;
+import java.io.IOException;
+import java.sql.*;
+
+import java.net.URL;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+public class SourceSearchController implements Initializable {
+
+    @FXML
+    private TableView<SourceSearchModel> SourceTableView;
+    @FXML
+    private TableColumn<SourceSearchModel,String> Source_title_TableColumn;
+    @FXML
+    private TableColumn<SourceSearchModel,String> Source_director_TableColumn;
+    @FXML
+    private TableColumn<SourceSearchModel,String> Source_producer_TableColumn;
+    @FXML
+    private TableColumn<SourceSearchModel,String> Source_screenwriter_TableColumn;
+    @FXML
+    private TableColumn<SourceSearchModel,String> Source_cast_TableColumn;
+    @FXML
+    private TableColumn<SourceSearchModel,String> Source_publisher_TableColumn;
+    @FXML
+    private TextField keywordTextField;
+    @FXML
+    private ImageView ImageView1;
+    @FXML
+    private ImageView ImageView2;
+    @FXML
+    private ImageView ImageView3;
+    @FXML
+    private ImageView ImageView4;
+    @FXML
+    private ImageView ImageView5;
+    @FXML
+    private ImageView ImageView6;
+    @FXML
+    private ImageView ImageView7;
+    @FXML
+    private ImageView ImageView8;
+    @FXML
+    private ImageView ImageView9;
+    @FXML
+    private ImageView ImageView10;
+    @FXML
+    private Button AddButton;
+    @FXML
+    private Button SourceButton;
+    @FXML
+    private Button ContentButton;
+    @FXML
+    private Button TagButton;
+    @FXML
+    private Button PurchaseButton;
+    @FXML
+    private Button SettingButton;
+    @FXML
+    private Button ExitButton;
+
+
+    ObservableList<SourceSearchModel> sourceSearchModelObservableList = FXCollections.observableArrayList();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle){
+        File brandingFile = new File("Images/blu_ray_disc_player_32px.png");
+        Image brandingImage = new Image(brandingFile.toURI().toString());
+        ImageView1.setImage(brandingImage);
+
+        brandingFile = new File("Images/add_database_32px.png");
+        brandingImage = new Image(brandingFile.toURI().toString());
+        ImageView2.setImage(brandingImage);
+
+        brandingFile = new File("Images/repository_32px.png");
+        brandingImage = new Image(brandingFile.toURI().toString());
+        ImageView3.setImage(brandingImage);
+
+        brandingFile = new File("Images/content_32px.png");
+        brandingImage = new Image(brandingFile.toURI().toString());
+        ImageView4.setImage(brandingImage);
+
+        brandingFile = new File("Images/tags_32px.png");
+        brandingImage = new Image(brandingFile.toURI().toString());
+        ImageView5.setImage(brandingImage);
+
+        brandingFile = new File("Images/purchase_order_32px.png");
+        brandingImage = new Image(brandingFile.toURI().toString());
+        ImageView6.setImage(brandingImage);
+
+        brandingFile = new File("Images/settings_32px.png");
+        brandingImage = new Image(brandingFile.toURI().toString());
+        ImageView7.setImage(brandingImage);
+
+        brandingFile = new File("Images/sign_out_32px.png");
+        brandingImage = new Image(brandingFile.toURI().toString());
+        ImageView8.setImage(brandingImage);
+
+        brandingFile = new File("Images/repository_32px.png");
+        brandingImage = new Image(brandingFile.toURI().toString());
+        ImageView9.setImage(brandingImage);
+
+        brandingFile = new File("Images/search_32px.png");
+        brandingImage = new Image(brandingFile.toURI().toString());
+        ImageView10.setImage(brandingImage);
+
+
+
+
+        DataBaseConnection connectNow = new DataBaseConnection();
+        Connection connectDB = connectNow.getConnection();
+
+        String SourceViewQuery = "SELECT Title,Director,Producer,Screenwriter,Cast,Publisher "
+        +" FROM  VCD_info INNER JOIN VCD_Source ON VCD_info.VCD_id = VCD_Source.VCD_id";
+
+        try{
+            Statement statement = connectDB.createStatement();
+            ResultSet queryOutput = statement.executeQuery(SourceViewQuery);
+
+            while (queryOutput.next()){
+                String queryTitle = queryOutput.getString("Title");
+                String queryDirector = queryOutput.getString("Director");
+                String queryProducer = queryOutput.getString("Producer");
+                String queryScreenwriter = queryOutput.getString("Screenwriter");
+                String queryCast = queryOutput.getString("Cast");
+                String queryPublisher = queryOutput.getString("Publisher");
+
+                sourceSearchModelObservableList.add(new SourceSearchModel(queryTitle,queryDirector,queryProducer,queryScreenwriter
+                ,queryCast,queryPublisher));
+            }
+
+            Source_title_TableColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+            Source_director_TableColumn.setCellValueFactory(new PropertyValueFactory<>("director"));
+            Source_producer_TableColumn.setCellValueFactory(new PropertyValueFactory<>("producer"));
+            Source_screenwriter_TableColumn.setCellValueFactory(new PropertyValueFactory<>("screenwriter"));
+            Source_cast_TableColumn.setCellValueFactory(new PropertyValueFactory<>("cast"));
+            Source_publisher_TableColumn.setCellValueFactory(new PropertyValueFactory<>("publisher"));
+
+            SourceTableView.setItems(sourceSearchModelObservableList);
+
+
+            FilteredList<SourceSearchModel> filteredData = new FilteredList<>(sourceSearchModelObservableList,b -> true);
+
+            keywordTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+                filteredData.setPredicate(sourceSearchModel -> {
+                    if(newValue.isEmpty() || newValue.isBlank() || newValue == null) {
+                        return true;
+                    }
+
+                    String searchKeyword = newValue.toLowerCase();
+
+                    if (sourceSearchModel.getTitle().indexOf(searchKeyword) > -1){
+                        return true;
+                    }
+                    else
+                        return false;
+                });
+            });
+
+            SortedList<SourceSearchModel> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(SourceTableView.comparatorProperty());
+            SourceTableView.setItems(sortedData);
+
+
+
+
+        }catch (SQLException e){
+            Logger.getLogger(SourceSearchController.class.getName()).log(Level.SEVERE,null,e);
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+    public void AddButtonOnAction(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("add.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void SourceButtonOnAction(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("source_table.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void ContentButtonOnAction(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("content_table.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+
+    }
+    public void TagButtonOnAction(ActionEvent event) throws IOException{
+        Parent parent = FXMLLoader.load(getClass().getResource("tag_table.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void PurchaseButtonOnAction(ActionEvent event) throws IOException{
+        Parent parent = FXMLLoader.load(getClass().getResource("purchase_table.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void SettingButtonOnAction(ActionEvent event) throws IOException{
+        Parent parent = FXMLLoader.load(getClass().getResource("settings_table.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void exitButtonOnAction(){
+        Stage stage = (Stage) ExitButton.getScene().getWindow();
+        stage.close();
+    }
+
+
+}
+```
+
+
+
+
+
+## 零售模块
+
+购买操作：
+![image](https://user-images.githubusercontent.com/62274988/197762773-d7a893ab-2528-42c5-8c84-519ca5cad892.png)
+
+购买前后数量：
+![image](https://user-images.githubusercontent.com/62274988/197762795-b0e7a05c-9140-4dad-80b1-338ca82b152a.png)
+
+订单视图：
+
+![image](https://user-images.githubusercontent.com/62274988/197762811-bfa8213d-2771-4389-81da-aa27e694ebec.png)
+
+
+Add to Cart的按钮绑定一个事件，用于读取上方两个TextField中的文本，与数据库连接，先从VCD_info中根据Title读取VCD_id，再用VCD_id在数据库查询Product表中的价格，接着将这一系列数据写入右侧的购物车中。
+
+这一系列数据库的操作都是基于SQL语句，通过JDBC提供的接口中，实例化我们定义的DatabaseConnect，用其中的executeQuery方法将拼接的SQL语句告诉数据库。
+![image](https://user-images.githubusercontent.com/62274988/197762863-02fe1d32-482c-44a9-8eea-8482bf5ffbfa.png)
+
+
+
+
+
+**按键事件代码：**
+
+```
+public void AddcartButtonOnAction(ActionEvent event){
+
+    String title;
+    float price;
+    int num;
+    String searchSQL;
+    String insertSQL;
+    float total;
+
+    if (titleTextField.getText().isBlank() == false && numTextField.getText().isBlank() ==false) {
+        orderTitle.setText(titleTextField.getText());
+        orderNum.setText(numTextField.getText());
+
+        try {
+            DataBaseConnection connectNow = new DataBaseConnection();
+            Connection connectDB = connectNow.getConnection();
+            Statement statement = connectDB.createStatement();
+
+            title = orderTitle.getText();
+            searchSQL = "SELECT Purchase_Price FROM Products_info,VCD_info WHERE Title ='" +title+"' AND VCD_info.VCD_id=Products_info.VCD_id";
+
+            ResultSet rs = statement.executeQuery(searchSQL);
+
+            while (rs.next())
+            {
+                System.out.println(rs.getFloat("Purchase_Price"));
+                price = rs.getFloat("Purchase_Price");
+                num = Integer.parseInt(orderNum.getText());
+
+                total = price* (num);
+                System.out.println(total);
+                TotalMessageText.setText(Float.toString(total));
+            }
+            statement.close();
+            connectDB.close();
+
+        }catch (SQLException e){
+            Logger.getLogger(AddSearchController.class.getName()).log(Level.SEVERE,null,e);
+            e.printStackTrace();
+        }
+    }
+    else {
+        addMessageText.setText("Blank, Please enter!");
+    }
+
+
+}
+```
+
+
+
+结算事件则绑定在Buy Now！按钮中，实现方法大同小异，访问数据库的不同表：
+
+
+
+**代码：**
+
+```
+public void BuyButtonOnAction(){
+
+    String title;
+    int num;
+    String searchSQL;
+    String insertSQL;
+    Random random = new Random();
+    int ran = random.nextInt(10000);
+
+    if (orderTitle.getText().isBlank() == false && orderNum.getText().isBlank() ==false) {
+
+
+        try {
+            title = orderTitle.getText();
+            num = Integer.parseInt(orderNum.getText());
+
+
+            searchSQL = "SELECT VCD_id FROM VCD_info WHERE Title ='"+title+"'";
+
+
+
+            DataBaseConnection connectNow = new DataBaseConnection();
+            Connection connectDB = connectNow.getConnection();
+            Statement statement = connectDB.createStatement();
+
+            ResultSet rs = statement.executeQuery(searchSQL);
+
+            while (rs.next())
+            {
+                System.out.println(rs.getString("VCD_id"));
+                insertSQL = "INSERT INTO Purchase_Order VALUES('"+""+ran+"','"+rs.getString("VCD_id")+"','"+num+"');";
+
+                System.out.println(insertSQL);
+
+                statement.executeUpdate(insertSQL);
+            }
+
+
+            statement.close();
+            connectDB.close();
+
+        }catch (SQLException e){
+            Logger.getLogger(AddSearchController.class.getName()).log(Level.SEVERE,null,e);
+            e.printStackTrace();
+        }
+
+
+    }
+    else
+    {
+
+
+    }
+
+}
+```
+
+
+
+
+
+我们在Add中做的所有操作都会间接记录在日志中，因为我在后端定义了几个触发器，其中一个是针对Product表的触发器，用于记录表中数据的增删改，另一个则是零售触发器，零售的操作也会对该表进行操作。
+
+![image](https://user-images.githubusercontent.com/62274988/197762938-963538a7-a1b6-45af-88ad-558d1d7a6233.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # 后端
 
-# 绪论
 
-## 要求：
-
-1.任选下列一个题目（或类似题目），调查分析一个具体的或模拟的实例；
-
-2.描述该实例的业务信息和管理工作的要求；
-
-3.列出实体、联系；
-
-4.指出实体和联系的属性；
-
-5.画出 E-R 图；
-
-6.将 E-R 图转换成关系模式，并注明主码和外码；
-
-7.建立数据字典；
-
-8.创建数据库；
-
-9.根据题目的要求写查询、存储过程、触发器等
-
-## 题目
-
-### VCD 零售\出租管理系统
-
-- 实现 VCD 类型及信息的管理；
-- 实现 VCD 的入库管理；
-- 实现 VCD 的借还管理；
-- 实现 VCD 的零售管理；
-- 创建触发器，入库登记、零售时自动修改、现货和库存，借、还时自动修改现货数量；
-- 创建存储过程统计某段时间内各 VCD 的销售、借还数量；
-- 创建视图查询各类 VCD 的库存情况；
-- 建立数据库相关表之间的参照完整性约束。
-
-
-
-# 说明书
 
 ## 需求分析
 
@@ -1279,1017 +2253,6 @@ FROM      dbo.VCD_info INNER JOIN
                 dbo.Products_info ON dbo.VCD_info.VCD_id = dbo.Products_info.VCD_id INNER JOIN
                 dbo.Purchase_Order ON dbo.VCD_info.VCD_id = dbo.Purchase_Order.VCD_id
 ```
-
-
-
-# 前端
-
-
-
-
-
-# 前端开发
-
-
-
-## 开发环境
-
-
-
-- IDE : IntelliJ IDEA 2021
-- 工具：JavaFX， JDK ：Oracle OpenJDK v16.0.2
-- 布局：Scene Builder
-- 客制化： CSS
-- 接口：JDBC sqljdbc_9.4.1.0_chs
-- 服务器：SQL Server 2019
-
-
-
-所需的外部包：
-
-![image](https://user-images.githubusercontent.com/62274988/197760751-328bdccd-1ec9-4d66-bd93-82a2b9988e3d.png)
-
-
-
-
-
-
-
-
-
-
-
-## Login
-
-
-
-### 基础界面：
-
-![image](https://user-images.githubusercontent.com/62274988/197760769-d6ade434-cf19-45f3-90ef-67527d718c67.png)
-
-
-
-
-账号密码为空时登录：
-
-![image](https://user-images.githubusercontent.com/62274988/197760805-1dc0d644-1d09-4bed-bb08-402d4054ebb9.png)
-
-账号密码错误：
-
-![image](https://user-images.githubusercontent.com/62274988/197760821-b966ca01-237c-4761-b273-b6828aaccb03.png)
-
-
-
-
-
-
-由于JavaFX自带的控件不够美观，对其添加自定义的CSS文件改变布局
-
-![image](https://user-images.githubusercontent.com/62274988/197760853-ff4d7b3c-8d9b-42f7-8a96-f7ca523c57f9.png)
-
-![image](https://user-images.githubusercontent.com/62274988/197760912-531bc1bf-7577-4ff4-be34-66aaff19f025.png)
-
-![image](https://user-images.githubusercontent.com/62274988/197760931-24ebd72a-e357-48ad-b4d6-559b1ba96d7f.png)
-
-![image](https://user-images.githubusercontent.com/62274988/197760969-9e807e73-1d43-47ca-8847-b5415cab3d2f.png)
-
-
-
-
-CSS: 添加了圆角和阴影效果
-
-![image](https://user-images.githubusercontent.com/62274988/197760996-19c8da55-46fb-4d8c-a8f6-5e9fe75b46b7.png)
-
-由于没有做自适应分辨率，因此取消顶部任务栏，改为无边框模式
-
-![image](https://user-images.githubusercontent.com/62274988/197761025-e4f387c0-1600-468b-acd4-fb59ad4b3c87.png)
-
-退出键绑定在Cancel中
-
-
-
-账号密码正确时，进入内部界面，首先创建Stage，跳转到我定义的默认的source_table布局中：
-![image](https://user-images.githubusercontent.com/62274988/197761049-8d0d038b-ac23-4252-b50d-81d6251c285c.png)
-
-
-
-
-
-### Login类代码：
-
-**LoginController**
-
-```
-package com.gui.sqldemo;
-
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.stage.WindowEvent;
-
-
-import java.io.File;
-import java.net.URL;
-import java.sql.Connection;
-import java.util.ResourceBundle;
-
-public class LoginController extends HelloApplication implements Initializable {
-
-    @FXML
-    private Button cancelButton;
-    @FXML
-    private Button loginButton;
-    @FXML
-    private Text loginMessageText;
-    @FXML
-    private ImageView brandingImageView;
-    @FXML
-    private TextField usernameTextField;
-    @FXML
-    private PasswordField enterPasswordField;
-    
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle){
-        File brandingFile = new File("Images/93492380.jpg");
-        Image brandingImage = new Image(brandingFile.toURI().toString());
-        brandingImageView.setImage(brandingImage);
-    }
-    public void loginButtonOnAction(ActionEvent event){
-
-        if (usernameTextField.getText().isBlank() == false && enterPasswordField.getText().isBlank() ==false){
-            validateLogin();
-        }
-        else {
-            loginMessageText.setText("Blank, Please enter");
-        }
-
-    }
-     public void cancelButtonOnAction(){
-         Stage stage = (Stage) cancelButton.getScene().getWindow();
-         stage.close();
-
-     }
-
-
-     public void  validateLogin(){
-
-        if(usernameTextField.getText().equals("sa")&&enterPasswordField.getText().equals("258866"))
-        {
-            loginMessageText.setText("Connect Success");
-           // DataBaseConnection connectNow = new DataBaseConnection();
-          //  Connection connectDB = connectNow.getConnection();
-            Stage stage = (Stage) loginButton.getScene().getWindow();
-            stage.close();
-            ViewAlter();
-
-
-        }
-        else {
-            loginMessageText.setText("Invalid Login, Please try again");
-        }
-
-
-     }
-
-
-
-     public void ViewAlter(){
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("source_table.fxml"));
-            Stage TableStage = new Stage();
-            TableStage.initStyle(StageStyle.UNDECORATED);
-            Scene scene = new Scene(root, 1280, 900);
-            TableStage.setScene(scene);
-            TableStage.show();
-            TableStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                public void handle(WindowEvent event) {
-                    //此处当stage关闭时，同时结束程序，避免stage关闭后，程序界面关闭了，但后台线程却依然运行的问题
-                    System.exit(0);
-                }
-            });
-
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-            e.getCause();
-        }
-
-     }
-
-
-}
-```
-
-
-
-**scratch.css:**
-
-```
-.text-field{
-    -fx-background-color: #FFFFFF;
-    -fx-background-radius: 100;
-}
-
-
-.transparent{
-    -fx-background-color: rgb(0,0,0,0);
-}
-
-
-.shadow{
-    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10.0,0.0,0.0,10.0);
-}
-
-
-.button{
-    -fx-background-color: #F2E635;
-    -fx-background-radius: 50;
-}
-
-.button:pressed{
-    -fx-background-color: #DBD030;
-}
-
-
-
-.button2{
-    -fx-background-color: #699BFF;
-}
-
-.button3{
-    -fx-background-color: #FF6B6B;
-}
-
-
-
-.button2:pressed{
-    -fx-background-color: #5F8DE8;
-}
-
-.button3:pressed{
-    -fx-background-color: #DE5D5D;
-}
-
-
-
-
-
-
-.table-view{
-    -fx-background-color:  #E6DAC5;
-    -fx-fill: white;
-}
-
-.table-view .column-header-background{
-    -fx-background-color:  #D9C27E;
-
-
-}
-
-.table-view .column-header, .table-view.filler{
-    -fx-size: 25;
-    -fx-border-width: 0 0 10 0;
-    -fx-background-color: transparent;
-}
-
-.table-view .column-header .label{
-    -fx-text-fill: white;
-}
-
-
-.pane{
-    -fx-background-color:  #E6DAC5;
-    -fx-background-radius: 50;
-}
-
-.Vbox{
-
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-## FXML Controller
-
-
-
-进入后台，每一个FXML文件对应一个Controller.java文件
-
-
-
-![image](https://user-images.githubusercontent.com/62274988/197761152-c18146ce-955b-42bb-9e73-d4fe4138c196.png)
-
-
-
-![image](https://user-images.githubusercontent.com/62274988/197761173-e7a6118a-db4a-451d-8e06-9495c9baccce.png)
-
-
-## JDBC
-
-
-
-连接数据库的过程封装成一个类：
-
-
-![image](https://user-images.githubusercontent.com/62274988/197761217-eace8f26-0a90-4f3f-bc2d-cea87694039c.png)
-
-
-
-
-![image](https://user-images.githubusercontent.com/62274988/197761248-0ff6d2a6-a88d-471c-9fdb-0b02eef36dbc.png)
-
-
-**具体代码：**
-
-```
-package com.gui.sqldemo;
-import java.sql.*;
-
-
-public class DataBaseConnection {
-
-    public Connection databaseLink;
-
-    public Connection getConnection() {
-        String JDriver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";//设置SQL Server数据库引擎
-        String connectDB = "jdbc:sqlserver://127.0.0.1:1433;DatabaseName=VCD_MS";//指定数据库
-        try {
-            Class.forName(JDriver);//加载数据库引擎
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            System.exit(0);
-        }
-
-        try {
-
-            String user = "sa";
-            String password = "******";
-            databaseLink = DriverManager.getConnection(connectDB,user,password);
-            Connection con = DriverManager.getConnection(connectDB, user, password);
-            System.out.println("连接数据库成功");
-            Statement cmd = con.createStatement();
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
-        }
-
-
-        return databaseLink;
-
-}
-
-}
-```
-
-
-
-
-
-## 信息管理界面
-
-
-
-包括： ContentSearchController 、SourceSearchController 、TagSearchController、PurchaseSearchController 、SettingSearchController
-
-![image](https://user-images.githubusercontent.com/62274988/197761278-77361aa3-4ab8-4bc3-aafe-bbdf80d815a8.png)
-
-### 基本信息显示
-
-![image](https://user-images.githubusercontent.com/62274988/197761310-17aeac70-9afa-41fa-9a80-78299bdf5b8f.png)
-
-
-
-对 TableView 进行数据库的数据导入
-
-![image](https://user-images.githubusercontent.com/62274988/197761361-243a0b87-e389-42fe-a09c-7d7dd33c248f.png)
-
-
-
-
-
-
-
-
-
-
-
-对  TableView 进行设计导入，由于每个表的内容都不一致，因此对每个表都要设计一个数据结构：
-
-
-
-此处举ContentSearchModel的例子：因为里面的数据包括大多数数据类型
-
-
-![image](https://user-images.githubusercontent.com/62274988/197761414-14576fa4-4eb9-4229-b18f-f60a97b199b0.png)
-
-
-
-ContentSearchModel中初始化的函数：
-
-![image](https://user-images.githubusercontent.com/62274988/197761504-4d4afdc6-4ce8-456d-9d1d-2e9c5aa7fa6f.png)
-
-```
-package com.gui.sqldemo;
-
-public class ContentSearchModel {
-
-    String title,language,rating,country,release,resolution,introduction,anothername;
-
-    int duration;
-    float score;
-
-    public ContentSearchModel(String title,String language,String rating,String country,String release
-    ,int duration,float score,String resolution,String introduction,String anothername){
-        this.title = title;
-        this.language = language;
-        this.rating = rating;
-        this.country = country;
-        this.release = release;
-        this.duration = duration;
-        this.score = score;
-        this.resolution = resolution;
-        this.introduction = introduction;
-        this.anothername = anothername;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public String getRating() {
-        return rating;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public String getRelease() {
-        return release;
-    }
-
-    public String getResolution() {
-        return resolution;
-    }
-
-    public String getIntroduction() {
-        return introduction;
-    }
-
-    public String getAnothername() {
-        return anothername;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public float getScore() {
-        return score;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public void setRelease(String release) {
-        this.release = release;
-    }
-
-    public void setResolution(String resolution) {
-        this.resolution = resolution;
-    }
-
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction;
-    }
-
-    public void setAnothername(String anothername) {
-        this.anothername = anothername;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
-    public void setScore(float score) {
-        this.score = score;
-    }
-}
-```
-
-ContentSearchController：
-
-![image](https://user-images.githubusercontent.com/62274988/197761682-7cc59721-03d6-4a1f-8311-53810fff1b77.png)
-
-![image](https://user-images.githubusercontent.com/62274988/197761721-41306e87-5ed0-44b0-98fc-233cca8ab979.png)
-
-
-
-### 搜索功能：
-
-搜索功能展示：
-
-![image](https://user-images.githubusercontent.com/62274988/197761794-d289e604-2d37-4de0-9143-0b7953931393.png)
-
-在我们定义的数据结构Model中提供数据调用的方法，作用与搜索模块中：
-
-![image](https://user-images.githubusercontent.com/62274988/197761845-92f0d7a0-3383-415a-9b48-d20987ef5940.png)
-
-
-
-读取TextField中的文本，与TableView中的数据进行比对：
-
-![image](https://user-images.githubusercontent.com/62274988/197761871-8ea1e9ce-d5d8-45ee-ae29-09ee73e3de5d.png)
-
-
-
-### 界面跳转：
-
-通过绑定点击按钮进行跳转
-
-![image](https://user-images.githubusercontent.com/62274988/197761931-77c9fb86-ac94-41e9-ad5f-a7214a2e7c19.png)
-
-点击按钮后
-
-![image](https://user-images.githubusercontent.com/62274988/197761978-77800bac-3249-4933-a3a2-a4e772a4fca8.png)
-
-
-对按钮颜色进行修改，能让用户更直观地看见目前所处的界面，同时左上方也有icon用来显示现在所处的界面。
-
-![image](https://user-images.githubusercontent.com/62274988/197762133-ae3403ab-0328-4aa8-889c-3877f1602559.png)
-
-![image](https://user-images.githubusercontent.com/62274988/197762163-fd8fe63a-0fde-48b7-84b7-a4d5abe8bdca.png)
-
-
-
-
-
-
-
-在 Controller中对对应的按钮绑定一个ButtonOnAction，用来响应按钮点击事件。我们这里的按钮用来跳转界面，在已经创建的Stage中加载其他fxml布局，不需要关闭Stage重新创建，在视觉上可以避免重新创建的时候闪烁的bug。
-
-![image](https://user-images.githubusercontent.com/62274988/197762266-6e9ed8dc-7833-476c-bbd5-fac941d277a6.png)
-
-
-
-
-
-在fxml文件中，我们绑定了Controller，因此在跳转界面时也会切换到对应的Controller中去。
-
-![image](https://user-images.githubusercontent.com/62274988/197762299-3d917ee0-181a-4823-b77c-a5a6ad0b3658.png)
-
-
-
-
-
-### 整体Controller代码：
-
-```
-package com.gui.sqldemo;
-
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
-import java.io.File;
-import java.io.IOException;
-import java.sql.*;
-
-import java.net.URL;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-
-public class SourceSearchController implements Initializable {
-
-    @FXML
-    private TableView<SourceSearchModel> SourceTableView;
-    @FXML
-    private TableColumn<SourceSearchModel,String> Source_title_TableColumn;
-    @FXML
-    private TableColumn<SourceSearchModel,String> Source_director_TableColumn;
-    @FXML
-    private TableColumn<SourceSearchModel,String> Source_producer_TableColumn;
-    @FXML
-    private TableColumn<SourceSearchModel,String> Source_screenwriter_TableColumn;
-    @FXML
-    private TableColumn<SourceSearchModel,String> Source_cast_TableColumn;
-    @FXML
-    private TableColumn<SourceSearchModel,String> Source_publisher_TableColumn;
-    @FXML
-    private TextField keywordTextField;
-    @FXML
-    private ImageView ImageView1;
-    @FXML
-    private ImageView ImageView2;
-    @FXML
-    private ImageView ImageView3;
-    @FXML
-    private ImageView ImageView4;
-    @FXML
-    private ImageView ImageView5;
-    @FXML
-    private ImageView ImageView6;
-    @FXML
-    private ImageView ImageView7;
-    @FXML
-    private ImageView ImageView8;
-    @FXML
-    private ImageView ImageView9;
-    @FXML
-    private ImageView ImageView10;
-    @FXML
-    private Button AddButton;
-    @FXML
-    private Button SourceButton;
-    @FXML
-    private Button ContentButton;
-    @FXML
-    private Button TagButton;
-    @FXML
-    private Button PurchaseButton;
-    @FXML
-    private Button SettingButton;
-    @FXML
-    private Button ExitButton;
-
-
-    ObservableList<SourceSearchModel> sourceSearchModelObservableList = FXCollections.observableArrayList();
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle){
-        File brandingFile = new File("Images/blu_ray_disc_player_32px.png");
-        Image brandingImage = new Image(brandingFile.toURI().toString());
-        ImageView1.setImage(brandingImage);
-
-        brandingFile = new File("Images/add_database_32px.png");
-        brandingImage = new Image(brandingFile.toURI().toString());
-        ImageView2.setImage(brandingImage);
-
-        brandingFile = new File("Images/repository_32px.png");
-        brandingImage = new Image(brandingFile.toURI().toString());
-        ImageView3.setImage(brandingImage);
-
-        brandingFile = new File("Images/content_32px.png");
-        brandingImage = new Image(brandingFile.toURI().toString());
-        ImageView4.setImage(brandingImage);
-
-        brandingFile = new File("Images/tags_32px.png");
-        brandingImage = new Image(brandingFile.toURI().toString());
-        ImageView5.setImage(brandingImage);
-
-        brandingFile = new File("Images/purchase_order_32px.png");
-        brandingImage = new Image(brandingFile.toURI().toString());
-        ImageView6.setImage(brandingImage);
-
-        brandingFile = new File("Images/settings_32px.png");
-        brandingImage = new Image(brandingFile.toURI().toString());
-        ImageView7.setImage(brandingImage);
-
-        brandingFile = new File("Images/sign_out_32px.png");
-        brandingImage = new Image(brandingFile.toURI().toString());
-        ImageView8.setImage(brandingImage);
-
-        brandingFile = new File("Images/repository_32px.png");
-        brandingImage = new Image(brandingFile.toURI().toString());
-        ImageView9.setImage(brandingImage);
-
-        brandingFile = new File("Images/search_32px.png");
-        brandingImage = new Image(brandingFile.toURI().toString());
-        ImageView10.setImage(brandingImage);
-
-
-
-
-        DataBaseConnection connectNow = new DataBaseConnection();
-        Connection connectDB = connectNow.getConnection();
-
-        String SourceViewQuery = "SELECT Title,Director,Producer,Screenwriter,Cast,Publisher "
-        +" FROM  VCD_info INNER JOIN VCD_Source ON VCD_info.VCD_id = VCD_Source.VCD_id";
-
-        try{
-            Statement statement = connectDB.createStatement();
-            ResultSet queryOutput = statement.executeQuery(SourceViewQuery);
-
-            while (queryOutput.next()){
-                String queryTitle = queryOutput.getString("Title");
-                String queryDirector = queryOutput.getString("Director");
-                String queryProducer = queryOutput.getString("Producer");
-                String queryScreenwriter = queryOutput.getString("Screenwriter");
-                String queryCast = queryOutput.getString("Cast");
-                String queryPublisher = queryOutput.getString("Publisher");
-
-                sourceSearchModelObservableList.add(new SourceSearchModel(queryTitle,queryDirector,queryProducer,queryScreenwriter
-                ,queryCast,queryPublisher));
-            }
-
-            Source_title_TableColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-            Source_director_TableColumn.setCellValueFactory(new PropertyValueFactory<>("director"));
-            Source_producer_TableColumn.setCellValueFactory(new PropertyValueFactory<>("producer"));
-            Source_screenwriter_TableColumn.setCellValueFactory(new PropertyValueFactory<>("screenwriter"));
-            Source_cast_TableColumn.setCellValueFactory(new PropertyValueFactory<>("cast"));
-            Source_publisher_TableColumn.setCellValueFactory(new PropertyValueFactory<>("publisher"));
-
-            SourceTableView.setItems(sourceSearchModelObservableList);
-
-
-            FilteredList<SourceSearchModel> filteredData = new FilteredList<>(sourceSearchModelObservableList,b -> true);
-
-            keywordTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-                filteredData.setPredicate(sourceSearchModel -> {
-                    if(newValue.isEmpty() || newValue.isBlank() || newValue == null) {
-                        return true;
-                    }
-
-                    String searchKeyword = newValue.toLowerCase();
-
-                    if (sourceSearchModel.getTitle().indexOf(searchKeyword) > -1){
-                        return true;
-                    }
-                    else
-                        return false;
-                });
-            });
-
-            SortedList<SourceSearchModel> sortedData = new SortedList<>(filteredData);
-            sortedData.comparatorProperty().bind(SourceTableView.comparatorProperty());
-            SourceTableView.setItems(sortedData);
-
-
-
-
-        }catch (SQLException e){
-            Logger.getLogger(SourceSearchController.class.getName()).log(Level.SEVERE,null,e);
-            e.printStackTrace();
-        }
-
-
-    }
-
-
-    public void AddButtonOnAction(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("add.fxml"));
-        Scene scene = new Scene(parent);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void SourceButtonOnAction(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("source_table.fxml"));
-        Scene scene = new Scene(parent);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void ContentButtonOnAction(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("content_table.fxml"));
-        Scene scene = new Scene(parent);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-
-    }
-    public void TagButtonOnAction(ActionEvent event) throws IOException{
-        Parent parent = FXMLLoader.load(getClass().getResource("tag_table.fxml"));
-        Scene scene = new Scene(parent);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void PurchaseButtonOnAction(ActionEvent event) throws IOException{
-        Parent parent = FXMLLoader.load(getClass().getResource("purchase_table.fxml"));
-        Scene scene = new Scene(parent);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void SettingButtonOnAction(ActionEvent event) throws IOException{
-        Parent parent = FXMLLoader.load(getClass().getResource("settings_table.fxml"));
-        Scene scene = new Scene(parent);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void exitButtonOnAction(){
-        Stage stage = (Stage) ExitButton.getScene().getWindow();
-        stage.close();
-    }
-
-
-}
-```
-
-
-
-
-
-## 零售模块
-
-购买操作：
-![image](https://user-images.githubusercontent.com/62274988/197762773-d7a893ab-2528-42c5-8c84-519ca5cad892.png)
-
-购买前后数量：
-![image](https://user-images.githubusercontent.com/62274988/197762795-b0e7a05c-9140-4dad-80b1-338ca82b152a.png)
-
-订单视图：
-
-![image](https://user-images.githubusercontent.com/62274988/197762811-bfa8213d-2771-4389-81da-aa27e694ebec.png)
-
-
-Add to Cart的按钮绑定一个事件，用于读取上方两个TextField中的文本，与数据库连接，先从VCD_info中根据Title读取VCD_id，再用VCD_id在数据库查询Product表中的价格，接着将这一系列数据写入右侧的购物车中。
-
-这一系列数据库的操作都是基于SQL语句，通过JDBC提供的接口中，实例化我们定义的DatabaseConnect，用其中的executeQuery方法将拼接的SQL语句告诉数据库。
-![image](https://user-images.githubusercontent.com/62274988/197762863-02fe1d32-482c-44a9-8eea-8482bf5ffbfa.png)
-
-
-
-
-
-**按键事件代码：**
-
-```
-public void AddcartButtonOnAction(ActionEvent event){
-
-    String title;
-    float price;
-    int num;
-    String searchSQL;
-    String insertSQL;
-    float total;
-
-    if (titleTextField.getText().isBlank() == false && numTextField.getText().isBlank() ==false) {
-        orderTitle.setText(titleTextField.getText());
-        orderNum.setText(numTextField.getText());
-
-        try {
-            DataBaseConnection connectNow = new DataBaseConnection();
-            Connection connectDB = connectNow.getConnection();
-            Statement statement = connectDB.createStatement();
-
-            title = orderTitle.getText();
-            searchSQL = "SELECT Purchase_Price FROM Products_info,VCD_info WHERE Title ='" +title+"' AND VCD_info.VCD_id=Products_info.VCD_id";
-
-            ResultSet rs = statement.executeQuery(searchSQL);
-
-            while (rs.next())
-            {
-                System.out.println(rs.getFloat("Purchase_Price"));
-                price = rs.getFloat("Purchase_Price");
-                num = Integer.parseInt(orderNum.getText());
-
-                total = price* (num);
-                System.out.println(total);
-                TotalMessageText.setText(Float.toString(total));
-            }
-            statement.close();
-            connectDB.close();
-
-        }catch (SQLException e){
-            Logger.getLogger(AddSearchController.class.getName()).log(Level.SEVERE,null,e);
-            e.printStackTrace();
-        }
-    }
-    else {
-        addMessageText.setText("Blank, Please enter!");
-    }
-
-
-}
-```
-
-
-
-结算事件则绑定在Buy Now！按钮中，实现方法大同小异，访问数据库的不同表：
-
-
-
-**代码：**
-
-```
-public void BuyButtonOnAction(){
-
-    String title;
-    int num;
-    String searchSQL;
-    String insertSQL;
-    Random random = new Random();
-    int ran = random.nextInt(10000);
-
-    if (orderTitle.getText().isBlank() == false && orderNum.getText().isBlank() ==false) {
-
-
-        try {
-            title = orderTitle.getText();
-            num = Integer.parseInt(orderNum.getText());
-
-
-            searchSQL = "SELECT VCD_id FROM VCD_info WHERE Title ='"+title+"'";
-
-
-
-            DataBaseConnection connectNow = new DataBaseConnection();
-            Connection connectDB = connectNow.getConnection();
-            Statement statement = connectDB.createStatement();
-
-            ResultSet rs = statement.executeQuery(searchSQL);
-
-            while (rs.next())
-            {
-                System.out.println(rs.getString("VCD_id"));
-                insertSQL = "INSERT INTO Purchase_Order VALUES('"+""+ran+"','"+rs.getString("VCD_id")+"','"+num+"');";
-
-                System.out.println(insertSQL);
-
-                statement.executeUpdate(insertSQL);
-            }
-
-
-            statement.close();
-            connectDB.close();
-
-        }catch (SQLException e){
-            Logger.getLogger(AddSearchController.class.getName()).log(Level.SEVERE,null,e);
-            e.printStackTrace();
-        }
-
-
-    }
-    else
-    {
-
-
-    }
-
-}
-```
-
-
-
-
-
-我们在Add中做的所有操作都会间接记录在日志中，因为我在后端定义了几个触发器，其中一个是针对Product表的触发器，用于记录表中数据的增删改，另一个则是零售触发器，零售的操作也会对该表进行操作。
-
-![image](https://user-images.githubusercontent.com/62274988/197762938-963538a7-a1b6-45af-88ad-558d1d7a6233.png)![image](https://user-images.githubusercontent.com/62274988/197762961-0ca13807-f9d3-474e-be3f-a375fc9564a4.png)
 
 
 
