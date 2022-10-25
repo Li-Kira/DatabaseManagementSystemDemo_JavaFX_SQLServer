@@ -205,8 +205,7 @@
 
 
 ## 数据流图
-
-![image-20211203183947089](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211203183947089.png)
+![image](https://user-images.githubusercontent.com/62274988/197759401-65fd494b-900a-4c48-ad6f-d2c29832cae8.png)
 
 
 
@@ -244,13 +243,13 @@ VCD标签（VCD编号，标签编号，标签名称）
 
 ### VCD基本信息
 
-![image-20211124202803937](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211124202803937.png)
+![image](https://user-images.githubusercontent.com/62274988/197759489-bc8e92ab-ee4c-451c-837f-02c21747192b.png)
 
 
 
 ### VCD来源
 
-![image-20211124202934310](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211124202934310.png)
+![image](https://user-images.githubusercontent.com/62274988/197759499-1f01f456-6fc4-441e-a013-b24ff030c157.png)
 
 
 
@@ -260,35 +259,35 @@ VCD标签（VCD编号，标签编号，标签名称）
 
 ### VCD内容
 
-![image-20211124202909522](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211124202909522.png)
+![image](https://user-images.githubusercontent.com/62274988/197759581-0abe7c08-aaba-4739-9af4-fcf5aa8900af.png)
+
+
 
 ### 标签库
 
-![image-20211124203000708](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211124203000708.png)
+![image](https://user-images.githubusercontent.com/62274988/197759548-c1aaea88-cc79-4409-9c5a-898849510a19.png)
 
 ### 商品信息
 
 
-
-![image-20211124203039471](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211124203039471.png)
+![image](https://user-images.githubusercontent.com/62274988/197759657-ca5156d8-c6d3-43d7-9e6f-f2eabab47abf.png)
 
 
 
 ### 出租商品信息
 
-![image-20211124203058705](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211124203058705.png)
+![image](https://user-images.githubusercontent.com/62274988/197759672-2826d25b-3eb4-49b3-9787-509b71ebd915.png)
 
 ### 进货信息
 
-![image-20211124203110104](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211124203110104.png)
+![image](https://user-images.githubusercontent.com/62274988/197759687-7c6da548-5fac-4286-8538-414729d942a2.png)
 
 
 
 
 
 ### 客户信息
-
-![image-20211124203121066](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211124203121066.png)
+![image](https://user-images.githubusercontent.com/62274988/197759701-16187d62-adb7-4a10-9c5a-4ba4f3c5ee36.png)
 
 
 
@@ -296,31 +295,27 @@ VCD标签（VCD编号，标签编号，标签名称）
 
 ### 购买订单信息
 
-![image-20211124203142999](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211124203142999.png)
-
+![image](https://user-images.githubusercontent.com/62274988/197759733-6743b96e-6c86-4b38-ae25-200d4cd39205.png)
 
 
 ### 出租订单信息
 
-![image-20211124204829671](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211124204829671.png)
+![image](https://user-images.githubusercontent.com/62274988/197759754-6ef8aad6-1ed6-414b-a28a-3278bbaef34b.png)
 
 ## 全局 E-R 图
 
 ### 信息管理
-
-![image-20211124203337764](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211124203337764.png)
-
+![image](https://user-images.githubusercontent.com/62274988/197759763-41996381-f18b-4396-9924-48add7d87cf0.png)
 
 
 ### 出租零售
 
-![image-20211124203251770](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211124203251770.png)
-
+![image](https://user-images.githubusercontent.com/62274988/197759796-4567a465-9ecd-4c11-ba5f-e46f0443b6da.png)
 
 
 ### 总览
 
-![image-20211124204849465](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211124204849465.png)
+![image](https://user-images.githubusercontent.com/62274988/197759827-5e22cdc6-f3a6-4250-a876-553fe269a4da.png)
 
 
 
@@ -921,7 +916,7 @@ GO
 
 在购买订单表中插入的值超过已有的库存量
 
-![QQ图片20211206202613](C:\Users\42279\Desktop\Subject\大三上\数据库原理与应用\数据库大作业\新建文件夹 (2)\QQ图片20211206202613.png)
+![image](https://user-images.githubusercontent.com/62274988/197759978-952dbb35-0fac-4d38-b6b5-63b14e4bab79.png)
 
 
 
@@ -929,11 +924,11 @@ GO
 
 在在购买订单表中插入的值小于购买的值
 
-![QQ图片20211206202642](C:\Users\42279\Desktop\Subject\大三上\数据库原理与应用\数据库大作业\新建文件夹 (2)\QQ图片20211206202642.png)
+![image](https://user-images.githubusercontent.com/62274988/197760028-e1aab6de-f11c-4551-aba6-a77eb5018502.png)
 
 
 
-![QQ图片20211206202645](C:\Users\42279\Desktop\Subject\大三上\数据库原理与应用\数据库大作业\新建文件夹 (2)\QQ图片20211206202645.png)
+![image](https://user-images.githubusercontent.com/62274988/197760050-1f665593-c680-456a-b783-6afe2a9bfa63.png)
 
 
 
@@ -941,9 +936,8 @@ GO
 
 插入前后的表
 
-![QQ图片20211206202649](C:\Users\42279\Desktop\Subject\大三上\数据库原理与应用\数据库大作业\新建文件夹 (2)\QQ图片20211206202649.png)
-
-![QQ图片20211206202652](C:\Users\42279\Desktop\Subject\大三上\数据库原理与应用\数据库大作业\新建文件夹 (2)\QQ图片20211206202652.png)
+![image](https://user-images.githubusercontent.com/62274988/197760094-ad401245-bc77-40c0-8e09-f4c62b6df795.png)
+![image](https://user-images.githubusercontent.com/62274988/197760132-7d8dd5f4-2460-480c-a399-411aad55a9f7.png)
 
 
 
@@ -980,7 +974,7 @@ end
 
 顾客信息：
 
-![8](C:\Users\42279\Desktop\Subject\大三上\数据库原理与应用\数据库大作业\新建文件夹\8.png)
+![image](https://user-images.githubusercontent.com/62274988/197760181-17c4cf98-6b44-44f8-aa46-dce802c8a74f.png)
 
 D级以上才能借阅
 
@@ -994,13 +988,13 @@ insert into Rental_Order values('114514','0001','114','2021-12-2','2022-2-2','NO
 
 后，初始出租订单信息中的出租状态应为NO，自动生成出租商品信息
 
-![1](C:\Users\42279\Desktop\Subject\大三上\数据库原理与应用\数据库大作业\新建文件夹\1.png)
+![image](https://user-images.githubusercontent.com/62274988/197760215-cac78626-051e-476c-8839-32568b15bdda.png)
 
  
 
 并对库存-1
 
-![2](C:\Users\42279\Desktop\Subject\大三上\数据库原理与应用\数据库大作业\新建文件夹\2.png)
+![image](https://user-images.githubusercontent.com/62274988/197760247-545d0a81-50a0-4320-8d50-8b0268d9e4a3.png)
 
  
 
@@ -1014,7 +1008,7 @@ insert into Rental_Order values('191981','0002','514','2021-12-2','2022-2-2','NO
 
 后，因信誉等级不够不能借
 
-![3](C:\Users\42279\Desktop\Subject\大三上\数据库原理与应用\数据库大作业\新建文件夹\3.png)
+![image](https://user-images.githubusercontent.com/62274988/197760270-34c3db07-6726-42cd-a50b-e25c938089af.png)
 
 
 
@@ -1053,13 +1047,13 @@ end
 
 将出租订单信息中的归还状态改为YES后，
 
-![4](C:\Users\42279\Desktop\Subject\大三上\数据库原理与应用\数据库大作业\新建文件夹\4.png)
+![image](https://user-images.githubusercontent.com/62274988/197760301-325e072f-bf1c-4d89-9a9a-ed1392046aea.png)![image](https://user-images.githubusercontent.com/62274988/197760340-e9d2ca87-29bd-467f-8fa0-604255c5f1c3.png)
 
 出租商品信息的状态自动改为在库。
 
 
+![image](https://user-images.githubusercontent.com/62274988/197760395-7ec4e1e9-a289-48aa-b6e1-b893c94f6129.png)
 
-![6](C:\Users\42279\Desktop\Subject\大三上\数据库原理与应用\数据库大作业\新建文件夹\6.png)
 
 库存自动+1
 
@@ -1121,17 +1115,17 @@ END
 
 
 
-![image-20211206205347273](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211206205347273.png)
+![image](https://user-images.githubusercontent.com/62274988/197760443-f93f6e25-442d-4448-9e34-3070419c9767.png)
 
 
 
-![image-20211206205426965](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211206205426965.png)
+![image](https://user-images.githubusercontent.com/62274988/197760485-8791a4dc-05fc-4f41-b039-aa3c363df780.png)
 
 
 
 
 
-![image-20211206205501763](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211206205501763.png)
+![image](https://user-images.githubusercontent.com/62274988/197760504-feb52548-19f6-4b66-9a7d-c071943faeba.png)
 
 
 
@@ -1157,7 +1151,7 @@ EXEC Pro_SearchTag '霸王别姬
 '
 ```
 
-![image-20211203173223290](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211203173223290.png)
+![image](https://user-images.githubusercontent.com/62274988/197760539-d1e11dfa-e3cc-4bb2-935c-25d797197f02.png)
 
 
 
@@ -1182,7 +1176,7 @@ WHERE VCD_info.Title = @Title
 EXEC Pro_SearchTitle 爱情	
 ```
 
-![image-20211203183133982](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211203183133982.png)
+![image](https://user-images.githubusercontent.com/62274988/197760565-376497c9-dcd6-44e2-97f6-1eb3bd597e0f.png)
 
 
 
@@ -1210,7 +1204,7 @@ WHERE VCD_Tag.Tag_name=@Tag
 
 #### 来源
 
-![image-20211202120101883](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211202120101883.png)
+![image](https://user-images.githubusercontent.com/62274988/197760613-5b3ef1a8-8960-4c94-b7b5-2eb35f86159b.png)
 
 ```
 SELECT   dbo.VCD_info.Title AS 标题, dbo.VCD_Source.Director AS 导演, dbo.VCD_Source.Producer AS 制片人, 
@@ -1223,7 +1217,7 @@ FROM      dbo.VCD_info INNER JOIN
 
 #### 内容
 
-![image-20211202115948540](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211202115948540.png)
+![image](https://user-images.githubusercontent.com/62274988/197760636-4c9c6fc0-081d-403c-8da3-b8b42917f716.png)
 
 ```
 SELECT   dbo.VCD_info.Title AS 标题, dbo.VCD_Content.Language AS 语言, dbo.VCD_Content.Rating AS 分级, 
@@ -1238,7 +1232,7 @@ FROM      dbo.VCD_info INNER JOIN
 
 #### 标签
 
-![image-20211207232624264](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211207232624264.png)
+![image](https://user-images.githubusercontent.com/62274988/197760663-05ef1f08-bf1c-42fc-b831-46aaf7073dbe.png)
 
 
 
@@ -1254,7 +1248,7 @@ FROM      dbo.VCD_Tag INNER JOIN
 
 #### 出租商品信息
 
-![image-20211203174059928](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211203174059928.png)
+![image](https://user-images.githubusercontent.com/62274988/197760694-021e3f55-b60f-482e-97fe-5a258e4a8e8c.png)
 
 
 
@@ -1274,7 +1268,7 @@ FROM      dbo.Rental_info INNER JOIN
 
 #### 零售商品信息
 
-![image-20211203174428518](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211203174428518.png)
+![image](https://user-images.githubusercontent.com/62274988/197760723-091dedbe-3509-4978-8a5b-a3ff26ad737a.png)
 
 
 
@@ -1313,7 +1307,7 @@ FROM      dbo.VCD_info INNER JOIN
 
 所需的外部包：
 
-![image-20211213085215326](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213085215326.png)
+![image](https://user-images.githubusercontent.com/62274988/197760751-328bdccd-1ec9-4d66-bd93-82a2b9988e3d.png)
 
 
 
@@ -1331,53 +1325,47 @@ FROM      dbo.VCD_info INNER JOIN
 
 ### 基础界面：
 
-![image-20211213084512940](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213084512940.png)
-
+![image](https://user-images.githubusercontent.com/62274988/197760769-d6ade434-cf19-45f3-90ef-67527d718c67.png)
 
 
 
 
 账号密码为空时登录：
 
-![image-20211213084530295](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213084530295.png)
+![image](https://user-images.githubusercontent.com/62274988/197760805-1dc0d644-1d09-4bed-bb08-402d4054ebb9.png)
 
 账号密码错误：
 
-![image-20211213084558330](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213084558330.png)
+![image](https://user-images.githubusercontent.com/62274988/197760821-b966ca01-237c-4761-b273-b6828aaccb03.png)
+
 
 
 
 
 
 由于JavaFX自带的控件不够美观，对其添加自定义的CSS文件改变布局
+![image](https://user-images.githubusercontent.com/62274988/197760853-ff4d7b3c-8d9b-42f7-8a96-f7ca523c57f9.png)
+![image](https://user-images.githubusercontent.com/62274988/197760912-531bc1bf-7577-4ff4-be34-66aaff19f025.png)
+![image](https://user-images.githubusercontent.com/62274988/197760931-24ebd72a-e357-48ad-b4d6-559b1ba96d7f.png)
+![image](https://user-images.githubusercontent.com/62274988/197760969-9e807e73-1d43-47ca-8847-b5415cab3d2f.png)
 
-![image-20211213084645891](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213084645891.png)
-
-![image-20211213084657675](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213084657675.png)
-
-
-
-![image-20211213084828512](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213084828512.png)
-
-![image-20211213084840387](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213084840387.png)
 
 
 
 CSS: 添加了圆角和阴影效果
 
-![image-20211213085021198](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213085021198.png)
+![image](https://user-images.githubusercontent.com/62274988/197760996-19c8da55-46fb-4d8c-a8f6-5e9fe75b46b7.png)
 
 由于没有做自适应分辨率，因此取消顶部任务栏，改为无边框模式
 
-![image-20211213085820898](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213085820898.png)
+![image](https://user-images.githubusercontent.com/62274988/197761025-e4f387c0-1600-468b-acd4-fb59ad4b3c87.png)
 
 退出键绑定在Cancel中
 
 
 
 账号密码正确时，进入内部界面，首先创建Stage，跳转到我定义的默认的source_table布局中：
-
-![image-20211219174530443](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211219174530443.png)
+![image](https://user-images.githubusercontent.com/62274988/197761049-8d0d038b-ac23-4252-b50d-81d6251c285c.png)
 
 
 
@@ -1607,12 +1595,11 @@ public class LoginController extends HelloApplication implements Initializable {
 
 
 
-![image-20211213085142308](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213085142308.png)
+![image](https://user-images.githubusercontent.com/62274988/197761152-c18146ce-955b-42bb-9e73-d4fe4138c196.png)
 
 
 
-![image-20211213085158442](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213085158442.png)
-
+![image](https://user-images.githubusercontent.com/62274988/197761173-e7a6118a-db4a-451d-8e06-9495c9baccce.png)
 
 
 ## JDBC
@@ -1621,11 +1608,13 @@ public class LoginController extends HelloApplication implements Initializable {
 
 连接数据库的过程封装成一个类：
 
-![image-20211213085443925](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213085443925.png)
+
+![image](https://user-images.githubusercontent.com/62274988/197761217-eace8f26-0a90-4f3f-bc2d-cea87694039c.png)
 
 
 
-![image-20211213085557213](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213085557213.png)
+
+![image](https://user-images.githubusercontent.com/62274988/197761248-0ff6d2a6-a88d-471c-9fdb-0b02eef36dbc.png)
 
 **具体代码：**
 
@@ -1679,19 +1668,21 @@ public class DataBaseConnection {
 
 包括： ContentSearchController 、SourceSearchController 、TagSearchController、PurchaseSearchController 、SettingSearchController
 
-![image-20211213085339976](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213085339976.png)
+![image](https://user-images.githubusercontent.com/62274988/197761278-77361aa3-4ab8-4bc3-aafe-bbdf80d815a8.png)
 
 ### 基本信息显示
 
-![image-20211213090008495](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213090008495.png)
+![image](https://user-images.githubusercontent.com/62274988/197761310-17aeac70-9afa-41fa-9a80-78299bdf5b8f.png)
 
 
 
 对 TableView 进行数据库的数据导入
 
+![image](https://user-images.githubusercontent.com/62274988/197761361-243a0b87-e389-42fe-a09c-7d7dd33c248f.png)
 
 
-![image-20211213090105185](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213090105185.png)
+
+
 
 
 
@@ -1705,13 +1696,13 @@ public class DataBaseConnection {
 
 此处举ContentSearchModel的例子：因为里面的数据包括大多数数据类型
 
-![image-20211213090443122](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213090443122.png)
+![image](https://user-images.githubusercontent.com/62274988/197761414-14576fa4-4eb9-4229-b18f-f60a97b199b0.png)
 
 
 
 ContentSearchModel中初始化的函数：
 
-![image-20211213090553295](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213090553295.png)
+![image](https://user-images.githubusercontent.com/62274988/197761504-4d4afdc6-4ce8-456d-9d1d-2e9c5aa7fa6f.png)
 
 ```
 package com.gui.sqldemo;
@@ -1821,9 +1812,9 @@ public class ContentSearchModel {
 
 ContentSearchController：
 
-![image-20211213090748716](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213090748716.png)
+![image](https://user-images.githubusercontent.com/62274988/197761682-7cc59721-03d6-4a1f-8311-53810fff1b77.png)
 
-![image-20211213090313824](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213090313824.png)
+![image](https://user-images.githubusercontent.com/62274988/197761721-41306e87-5ed0-44b0-98fc-233cca8ab979.png)
 
 
 
@@ -1831,49 +1822,51 @@ ContentSearchController：
 
 搜索功能展示：
 
-![image-20211213090218724](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213090218724.png)
+![image](https://user-images.githubusercontent.com/62274988/197761794-d289e604-2d37-4de0-9143-0b7953931393.png)
 
 在我们定义的数据结构Model中提供数据调用的方法，作用与搜索模块中：
 
-![image-20211213090628089](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213090628089.png)
+![image](https://user-images.githubusercontent.com/62274988/197761845-92f0d7a0-3383-415a-9b48-d20987ef5940.png)
 
 
 
 读取TextField中的文本，与TableView中的数据进行比对：
 
-![image-20211213094303811](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211213094303811.png)
+![image](https://user-images.githubusercontent.com/62274988/197761871-8ea1e9ce-d5d8-45ee-ae29-09ee73e3de5d.png)
 
 
 
 ### 界面跳转：
 
 通过绑定点击按钮进行跳转
-
-![image-20211219173700660](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211219173700660.png)
+![image](https://user-images.githubusercontent.com/62274988/197761931-77c9fb86-ac94-41e9-ad5f-a7214a2e7c19.png)
 
 点击按钮后
 
-![image-20211219173719741](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211219173719741.png)
+![image](https://user-images.githubusercontent.com/62274988/197761978-77800bac-3249-4933-a3a2-a4e772a4fca8.png)![image](https://user-images.githubusercontent.com/62274988/197761976-380f97b0-7692-4b2e-80ee-b558f0fafc7a.png)
+
 
 对按钮颜色进行修改，能让用户更直观地看见目前所处的界面，同时左上方也有icon用来显示现在所处的界面。
+![image](https://user-images.githubusercontent.com/62274988/197762133-ae3403ab-0328-4aa8-889c-3877f1602559.png)
+![image](https://user-images.githubusercontent.com/62274988/197762163-fd8fe63a-0fde-48b7-84b7-a4d5abe8bdca.png)
 
 
 
-![image-20211219173923100](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211219173923100.png)
 
-![image-20211219173934062](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211219173934062.png)
 
 
 
 在 Controller中对对应的按钮绑定一个ButtonOnAction，用来响应按钮点击事件。我们这里的按钮用来跳转界面，在已经创建的Stage中加载其他fxml布局，不需要关闭Stage重新创建，在视觉上可以避免重新创建的时候闪烁的bug。
 
-![image-20211219174007799](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211219174007799.png)
+![image](https://user-images.githubusercontent.com/62274988/197762266-6e9ed8dc-7833-476c-bbd5-fac941d277a6.png)
+
+
 
 
 
 在fxml文件中，我们绑定了Controller，因此在跳转界面时也会切换到对应的Controller中去。
 
-![image-20211219174258643](C:\Users\42279\AppData\Roaming\Typora\typora-user-images\image-20211219174258643.png)
+![image](https://user-images.githubusercontent.com/62274988/197762299-3d917ee0-181a-4823-b77c-a5a6ad0b3658.png)
 
 
 
