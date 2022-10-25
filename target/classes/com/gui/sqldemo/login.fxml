@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="shadow" stylesheets="@../../../css/scratch.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.sqldemo.LoginController">
+   <left>
+      <AnchorPane prefHeight="400.0" prefWidth="228.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="brandingImageView" fitHeight="407.0" fitWidth="228.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Images/93492380.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="383.0" style="-fx-background-color: ECECE7;" styleClass="shadow" stylesheets="@../../../css/scratch.css" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="57.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Text>
+            <Text layoutX="56.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="57.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <PasswordField fx:id="enterPasswordField" layoutX="125.0" layoutY="183.0" prefHeight="26.0" prefWidth="152.0" promptText="Password" styleClass="shadow" stylesheets="@../../../css/scratch.css" />
+            <Button fx:id="loginButton" layoutX="59.0" layoutY="264.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="30.0" prefWidth="227.0" style="-fx-background-color: #D9C27E;" styleClass="shadow" stylesheets="@../../../css/scratch.css" text="Login" textFill="#805555" />
+            <Text fx:id="loginMessageText" fill="#8d8787" layoutX="59.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="222.81640625">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <Button fx:id="cancelButton" layoutX="59.0" layoutY="309.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="30.0" prefWidth="227.0" style="-fx-background-color: #D9C27E;" styleClass="shadow" stylesheets="@../../../css/scratch.css" text="Cancel" textFill="#805555" />
+            <TextField fx:id="usernameTextField" layoutX="124.0" layoutY="141.0" prefHeight="14.0" prefWidth="152.0" promptText="Username" styleClass="shadow" stylesheets="@../../../css/scratch.css" />
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="paneSearch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1280.0" style="-fx-background-color: #F2E6D0;" styleClass="shadow" stylesheets="@../../../css/scratch.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.sqldemo.AddSearchController">
+    <children>
+        <TableView fx:id="AddTableView" layoutX="290.0" layoutY="162.0" prefHeight="305.0" prefWidth="980.0" stylesheets="@../../../css/scratch.css">
+            <columns>
+                <TableColumn fx:id="Add_title_TableColumn" prefWidth="301.0" text="片名" />
+                <TableColumn fx:id="Add_price_TableColumn" prefWidth="337.0" text="单价" />
+                <TableColumn fx:id="Add_stock_TableColumn" minWidth="0.0" prefWidth="341.0" text="库存" />
+            </columns>
+        </TableView>
+        <TextField fx:id="keywordTextField" layoutX="374.0" layoutY="79.0" prefHeight="34.0" prefWidth="893.0" promptText="Keywords..." styleClass="shadow" stylesheets="@../../../css/scratch.css" />
+        <VBox prefHeight="900.0" prefWidth="280.0" style="-fx-background-color: #F2E635;">
+            <children>
+                <Pane prefHeight="205.0" prefWidth="280.0" style="-fx-background-color: #F2E635;" stylesheets="@../../../css/scratch.css">
+                    <children>
+
+                        <Text fill="#6e5d54" layoutX="63.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VCDManager">
+                            <font>
+                                <Font size="28.0" />
+                            </font>
+                        </Text>
+                        <ImageView fx:id="ImageView1" fitHeight="30.0" fitWidth="30.0" layoutX="33.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../../../Images/blu_ray_disc_player_32px.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+                <Button fx:id="AddButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="280.0" style="-fx-background-color: #D1C62E;" styleClass="shadow" stylesheets="@../../../css/scratch.css" text="Add" textFill="#6e5d54">
+                    <graphic>
+                        <ImageView fx:id="ImageView2" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../../../Images/add_database_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Button>
+                <Button fx:id="SourceButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#SourceButtonOnAction" prefHeight="72.0" prefWidth="280.0" stylesheets="@../../../css/scratch.css" text="Source" textFill="#6e5d54">
+                    <graphic>
+
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fx:id="ImageView3" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../../../Images/repository_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="ContentButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#ContentButtonOnAction" prefHeight="72.0" prefWidth="280.0" stylesheets="@../../../css/scratch.css" text="Content" textFill="#6e5d54">
+                    <graphic>
+
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fx:id="ImageView4" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../../../Images/content_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="TagButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#TagButtonOnAction" prefHeight="72.0" prefWidth="280.0" stylesheets="@../../../css/scratch.css" text="Tag" textFill="#6e5d54">
+                    <graphic>
+
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fx:id="ImageView5" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../../../Images/tags_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="PurchaseButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#PurchaseButtonOnAction" prefHeight="72.0" prefWidth="280.0" stylesheets="@../../../css/scratch.css" text="Purchase" textFill="#6e5d54">
+                    <graphic>
+
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fx:id="ImageView6" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../../../Images/purchase_order_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="SettingButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#SettingButtonOnAction" prefHeight="72.0" prefWidth="280.0" stylesheets="@../../../css/scratch.css" text="Setting" textFill="#6e5d54">
+                    <graphic>
+
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fx:id="ImageView7" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../../../Images/settings_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="ExitButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#exitButtonOnAction" prefHeight="72.0" prefWidth="280.0" stylesheets="@../../../css/scratch.css" text="Exit" textFill="#6e5d54">
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <graphic>
+                    </graphic>
+                    <graphic>
+                        <ImageView fx:id="ImageView8" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../../../Images/sign_out_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </VBox>
+        <ImageView fx:id="ImageView10" fitHeight="30.0" fitWidth="30.0" layoutX="334.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../../../../Images/search_32px.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="ImageView9" fitHeight="30.0" fitWidth="30.0" layoutX="294.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../../../../Images/add_database_32px.png" />
+            </image>
+        </ImageView>
+        <Line endX="280.0" endY="205.00001525878906" startX="-1.0172526344831567E-5" startY="205.00001525878906" stroke="#fcefd0" strokeWidth="2.0" />
+        <Line endX="280.0" endY="900.0" startX="280.0" startY="-15.707107543945312" stroke="#fcefd0" />
+      <Pane layoutX="294.0" layoutY="482.0" prefHeight="393.0" prefWidth="467.0" styleClass="pane" stylesheets="@../../../css/scratch.css">
+         <children>
+            <TextField fx:id="titleTextField" layoutX="141.0" layoutY="99.0" prefHeight="36.0" prefWidth="201.0" styleClass="shadow" stylesheets="@../../../css/scratch.css" />
+            <Text fill="#6e5d54" layoutX="59.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="片名">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <Text fill="#6e5d54" layoutX="59.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="数量">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <TextField fx:id="numTextField" layoutX="141.0" layoutY="173.0" prefHeight="36.0" prefWidth="201.0" styleClass="shadow" stylesheets="@../../../css/scratch.css" />
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Images/shopping_cart_96px.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="AddCartButton" layoutX="59.0" layoutY="283.0" mnemonicParsing="false" onAction="#AddcartButtonOnAction" prefHeight="50.0" prefWidth="154.0" stylesheets="@../../../css/scratch.css" text="Add to Cart">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="button2" />
+               </styleClass>
+            </Button>
+            <Button fx:id="RemoveButton" layoutX="242.0" layoutY="283.0" mnemonicParsing="false" onAction="#RemoveButtonOnAction" prefHeight="50.0" prefWidth="154.0" stylesheets="@../../../css/scratch.css" text="Remove">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="button3" />
+               </styleClass>
+            </Button>
+            <Text fx:id="addMessageText" fill="#6e5d54" layoutX="152.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="179.04685939848423">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="784.0" layoutY="482.0" prefHeight="393.0" prefWidth="482.0" styleClass="pane" stylesheets="@../../../css/scratch.css">
+         <children>
+            <Text fill="#6e5d54" layoutX="56.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="￥" wrappingWidth="179.0468788743019">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="TotalMessageText" fill="#6e5d54" layoutX="87.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="154.0">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="216.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Images/purchase_order_64px.png" />
+               </image>
+            </ImageView>
+            <Text fill="#6e5d54" layoutX="87.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List：   Title                                           Num  " wrappingWidth="375.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Button fx:id="BuyButton" layoutX="290.0" layoutY="280.0" mnemonicParsing="false" onAction="#BuyButtonOnAction" prefHeight="50.0" prefWidth="154.0" styleClass="shadow" stylesheets="@../../../css/scratch.css" text="Buy Now！">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Text fx:id="orderTitle" fill="#6e5d54" layoutX="134.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="179.0468788743019">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="orderNum" fill="#6e5d54" layoutX="341.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="69.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+    </children>
+</Pane>

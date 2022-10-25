@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.shape.Line?>
+<Pane fx:id="paneSearch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1280.0" style="-fx-background-color: #F2E6D0;" styleClass="shadow" stylesheets="@../../../css/scratch.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gui.sqldemo.SourceSearchController">
+   <children>
+      <TableView fx:id="SourceTableView" layoutX="290.0" layoutY="162.0" prefHeight="724.0" prefWidth="980.0" stylesheets="@../../../css/scratch.css">
+        <columns>
+            <TableColumn fx:id="Source_title_TableColumn" prefWidth="132.0" text="片名" />
+          <TableColumn fx:id="Source_director_TableColumn" prefWidth="131.0" text="导演" />
+            <TableColumn fx:id="Source_producer_TableColumn" minWidth="0.0" prefWidth="128.0" text="制作人" />
+            <TableColumn fx:id="Source_screenwriter_TableColumn" prefWidth="142.0" text="编剧" />
+            <TableColumn fx:id="Source_cast_TableColumn" minWidth="0.0" prefWidth="245.0" text="主演" />
+            <TableColumn fx:id="Source_publisher_TableColumn" prefWidth="201.0" text="发行商" />
+        </columns>
+      </TableView>
+      <TextField fx:id="keywordTextField" layoutX="374.0" layoutY="79.0" prefHeight="34.0" prefWidth="893.0" promptText="Keywords..." styleClass="shadow" stylesheets="@../../../css/scratch.css" />
+      <VBox prefHeight="900.0" prefWidth="280.0" style="-fx-background-color: #F2E635;">
+         <children>
+            <Pane prefHeight="205.0" prefWidth="280.0" style="-fx-background-color: #F2E635;" stylesheets="@../../../css/scratch.css">
+               <children>
+
+                  <Text fill="#6e5d54" layoutX="63.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VCDManager">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="ImageView1" fitHeight="30.0" fitWidth="30.0" layoutX="33.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Images/blu_ray_disc_player_32px.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Button fx:id="AddButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#AddButtonOnAction" prefHeight="72.0" prefWidth="280.0" stylesheets="@../../../css/scratch.css" text="Add" textFill="#6e5d54">
+               <graphic>
+                  <ImageView fx:id="ImageView2" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Images/add_database_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="SourceButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="280.0" style="-fx-background-color: #D1C62E;" styleClass="shadow" stylesheets="@../../../css/scratch.css" text="Source" textFill="#6e5d54">
+               <graphic>
+
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="ImageView3" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Images/repository_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="ContentButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#ContentButtonOnAction" prefHeight="72.0" prefWidth="280.0" stylesheets="@../../../css/scratch.css" text="Content" textFill="#6e5d54">
+               <graphic>
+
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="ImageView4" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Images/content_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="TagButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#TagButtonOnAction" prefHeight="72.0" prefWidth="280.0" stylesheets="@../../../css/scratch.css" text="Tag" textFill="#6e5d54">
+               <graphic>
+
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="ImageView5" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Images/tags_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="PurchaseButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#PurchaseButtonOnAction" prefHeight="72.0" prefWidth="280.0" stylesheets="@../../../css/scratch.css" text="Purchase" textFill="#6e5d54">
+               <graphic>
+
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="ImageView6" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Images/purchase_order_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="SettingButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#SettingButtonOnAction" prefHeight="72.0" prefWidth="280.0" stylesheets="@../../../css/scratch.css" text="Setting" textFill="#6e5d54">
+               <graphic>
+
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fx:id="ImageView7" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Images/settings_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="ExitButton" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#exitButtonOnAction" prefHeight="72.0" prefWidth="280.0" stylesheets="@../../../css/scratch.css" text="Exit" textFill="#6e5d54">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+               </graphic>
+               <graphic>
+                  <ImageView fx:id="ImageView8" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Images/sign_out_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+      <ImageView fx:id="ImageView10" fitHeight="30.0" fitWidth="30.0" layoutX="334.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Images/search_32px.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ImageView9" fitHeight="30.0" fitWidth="30.0" layoutX="294.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Images/repository_32px.png" />
+         </image>
+      </ImageView>
+      <Line endX="280.0" endY="205.00001525878906" startX="-1.0172526344831567E-5" startY="205.00001525878906" stroke="#fcefd0" strokeWidth="2.0" />
+      <Line endX="280.0" endY="900.0" startX="280.0" startY="-15.707107543945312" stroke="#fcefd0" />
+   </children>
+</Pane>
